@@ -20,6 +20,27 @@ const fetchAndParse = (url) =>
       }
     });
 
-const loadComponent = (url) => fetchAndParse(url);
+const loadComponent = url => fetchAndParse(url).then(registerComponent);
+
+
+const createBaseComponentClass = (style, template) => {
+  class BaseComponent extends HTMLElement {
+    connectedCallback() {
+      this._setupShadowDOM();
+    }
+  		
+    _setupShadowDOM() {
+      const shadow = this.attachShadow({mode: 'open'});
+      shadow.appendChild(style.cloneNode(true));
+      shadow.appendChild(document.importNode(template.content, true ));
+    }
+  }
+
+  return BaseComponent;
+};
+
+const registerComponent = ({template, style, script}) => {
+  return customElements.define('hello-world', createBaseComponentClass(style, template));
+};
 
 export default loadComponent
