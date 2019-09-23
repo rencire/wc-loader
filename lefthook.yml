@@ -1,13 +1,13 @@
 pre-commit:
   commands:
-    eslint:
+    lint_ts:
       glob: "*.{ts,tsx}"
       run: npx eslint {staged_files} --fix
-    format:
+    format_other:
       glob: "*.{json,md}"
-      run: npx prettier --write 
+      run: npx prettier {staged_files} --write 
 pre-push:
   commands:
-    test: npx jest --bail
+    test_ts: npx jest --bail
 
 
