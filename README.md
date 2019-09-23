@@ -1,5 +1,22 @@
 # Web Component Loader
 
+# Usage
+
+## Example
+
+```
+cd example
+```
+
+Run a http server
+Example using `nix-shell` and `python`:
+
+```
+nix-shell -p python3 --run "python -m http.server"
+```
+
+(see https://gist.github.com/willurd/5720255 for more web server one-liner commands).
+
 # TODO
 
 - [] Adopt Typescript
