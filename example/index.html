@@ -2,8 +2,8 @@
 <html>
   <head>
     <script type="module">
-      import loadComponent from './WCLoader.js';
-      loadComponent('HelloWorld.wc').then( comp => console.log(comp));
+      import loadComponent from './lib/WCLoader.js';
+      loadComponent('./HelloWorld.wc').then( comp => console.log(comp));
     </script>
   </head>
   <body>
