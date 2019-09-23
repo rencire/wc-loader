@@ -1,0 +1,13 @@
+pre-commit:
+  commands:
+    eslint:
+      glob: "*.{ts,tsx}"
+      run: npx eslint {staged_files} --fix
+    format:
+      glob: "*.{json,md}"
+      run: npx prettier --write 
+pre-push:
+  commands:
+    test: npx jest --bail
+
+
