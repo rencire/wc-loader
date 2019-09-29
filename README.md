@@ -1,4 +1,5 @@
-# Web Component Loader
+# Web Component Import
+Simple script to import Web component files.
 
 # Usage
 
@@ -16,6 +17,19 @@ nix-shell -p python3 --run "python -m http.server"
 ```
 
 (see https://gist.github.com/willurd/5720255 for more web server one-liner commands).
+
+
+
+# Develop
+## Prerequisites
+- [nix](https://nixos.org/nix/) 
+
+## Installation
+For development, first drop into nix shell.  Project dependencies will automatically be installed and loaded.
+```
+nix-shell 
+```
+Then start contributing!
 
 # TODO
 
