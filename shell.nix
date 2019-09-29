@@ -1,7 +1,7 @@
-with import <nixpkgs> {};
+with import ./nix {};
   mkShell { 
     buildInputs = [ 
-      nodejs-10_x
       lefthook
+      nodejs-10_x
     ];
   }
