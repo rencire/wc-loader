@@ -27,11 +27,19 @@ nix-shell -p python3 --run "python -m http.server"
 
 ## Setup
 
-For development, first drop into nix shell. Project dependencies from `shell.nix` will automatically be installed and loaded.
+### 1a) With direnv installed
+
+Simply `cd` into this project directory, and `direnv` will use `nix-shell` with the `shell.nix` file. Project dependencies from `shell.nix` will automatically be installed and loaded.
+
+### 1b) Without direnv installed
+
+We need to manually drop into a nix shell:
 
 ```
 nix-shell
 ```
+
+### 2) Install npm dependencies
 
 Now we need to install node-specific dependencies for linting/testing/etc.:
 
@@ -40,6 +48,8 @@ npm ci
 ```
 
 (in future, would like to move these under 'nix' also)
+
+### 3) Start Developing!
 
 Now make a pull request, or two :)
 
