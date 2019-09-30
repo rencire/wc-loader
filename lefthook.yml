@@ -2,10 +2,10 @@ pre-commit:
   commands:
     lint_ts:
       glob: "*.{ts,tsx}"
-      run: npx eslint {staged_files} --fix
+      run: npx eslint {staged_files} --fix && git add {staged_files}
     format_other:
       glob: "*.{json,md}"
-      run: npx prettier {staged_files} --write 
+      run: npx prettier {staged_files} --write && git add {staged_files}
 pre-push:
   commands:
     test_ts: npx jest --bail
