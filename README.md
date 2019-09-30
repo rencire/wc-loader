@@ -45,7 +45,7 @@ Now make a pull request, or two :)
 
 # TODO
 
-- [] Adopt Typescript
+- [x] Adopt Typescript
 - [] Support 'default export' of an object in .wc file with `name` of component
 - [] Support `default export` of a Web Component class. Will most likely extend `BaseComponent`, or `HTMLElement`. Of course can extend any other class.
 
