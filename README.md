@@ -39,10 +39,6 @@ Now we need to install node-specific dependencies for linting/testing/etc.:
 npm ci
 ```
 
-
-
-
-
 (in future, would like to move these under 'nix' also)
 
 Now make a pull request, or two :)
