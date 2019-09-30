@@ -1,9 +1,8 @@
-{ sources ? import ./sources.nix }:
-
 let
-  overlay = self: pkgs:
+  sources = import ./sources.nix;
+  overlay = selfpkgs: superpkgs:
       { sources = sources;
-        lefthook = pkgs.callPackage ./lefthook.nix {};
+        lefthook = superpkgs.callPackage ./lefthook.nix {}; 
       };
 in
   import sources.nixpkgs
