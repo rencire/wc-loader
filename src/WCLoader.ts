@@ -28,13 +28,13 @@ const fetchAndParse = (url: string) =>
       },
     );
 
-
 const createBaseComponentClass = (
   style: HTMLStyleElement | null,
   template: HTMLTemplateElement | null,
 ) => {
   class BaseComponent extends HTMLElement {
-    connectedCallback() {
+    constructor() {
+      super();
       this._setupShadowDOM();
     }
 
