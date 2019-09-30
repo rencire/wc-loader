@@ -46,8 +46,17 @@ Now make a pull request, or two :)
 # TODO
 
 - [x] Adopt Typescript
-- [] Support 'default export' of an object in .wc file with `name` of component
-- [] Support `default export` of a Web Component class. Will most likely extend `BaseComponent`, or `HTMLElement`. Of course can extend any other class.
+- [x] Load style and template into shadow DOM.
+- [] Support 'default export' of an object from .wc file:
+  - [] By default, will use `BaseComponent`.
+  - [] Allow specifying `name` of component.
+  - [] Allow specifying event handlers for component.
+    - convention? `on` or `handle` prefix?
+  - [] Support specifying a custom class to export (if need to write more logic in component).
+    - [] If specifying a custom class, then event handlers should be in the custom class; do not allow event handlers in the exported object.
+- [] Support `default export` of a Web Component class.
+  - Will most likely extend `BaseComponent`, or `HTMLElement`. Of course can extend any other custom class.
+  - [] Use class name as the custom element tag name
 
 # Notes
 
