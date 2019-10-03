@@ -52,12 +52,13 @@ const createBaseComponentClass = (
   return BaseComponent;
 };
 
-const registerComponent = ({ template, style, script }: ParsedComponent) => {
+export const registerComponent = ({ template, style, script }: ParsedComponent) => {
   return customElements.define(
     "hello-world",
     createBaseComponentClass(style, template),
   );
 };
+
 
 const loadComponent = (url: string) =>
   fetchAndParse(url).then(registerComponent);
