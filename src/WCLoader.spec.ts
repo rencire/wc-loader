@@ -20,11 +20,18 @@ describe("unit tests", () => {
         upgrade: jest.fn(),
         whenDefined: jest.fn(),
       };
-      const name = "my-name";
+      const settings = {
+        module: { name: "my-name" },
+        template: null,
+        style: null,
+      };
       // Execute
-      registerComponent({ name });
+      registerComponent(settings);
       // Validate
-      expect(window.customElements.define).toHaveBeenCalledWith(name);
+      expect(window.customElements.define).toBeCalledWith(
+        settings.module.name,
+        expect.any(Function),
+      );
     });
   });
 });
