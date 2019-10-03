@@ -1,0 +1,15 @@
+<template>
+  Default name
+</template>
+
+<script>
+  import {BaseComponent} from './lib/WCLoader.js';
+  class DefaultWithName extends BaseComponent {
+    constructor () {
+      super();
+    }
+  };
+  export default {
+    component: DefaultWithName
+  };
+</script>

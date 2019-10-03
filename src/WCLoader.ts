@@ -31,6 +31,8 @@ const fetchAndParse = (url: string) =>
         const style = head.querySelector("style");
         const script = head.querySelector("script");
 
+        console.log(script);
+
         return {
           template,
           style,
@@ -72,10 +74,14 @@ const getSettings = ({
   if (script === null) {
     return Promise.resolve({ template, style, module: {} });
   }
-  const jsFile = new Blob([script!.textContent as string], {
+  const jsFile = new File([script!.textContent as string], {
     type: "application/javascript",
   });
   const jsFileUrl = URL.createObjectURL(jsFile);
+
+  console.log(script);
+  console.log(jsFile);
+  console.log(jsFileUrl);
 
   // TODO need to handle case when <script> exists, but no object is exported.
   return import(jsFileUrl).then(module => ({ module, template, style }));
@@ -86,6 +92,7 @@ export const registerComponent = ({
   style,
   module,
 }: ComponentSettings) => {
+  console.log(module);
   const moduleSettings = module as ModuleSettings;
   if (!moduleSettings.name && !moduleSettings.component) {
     return;

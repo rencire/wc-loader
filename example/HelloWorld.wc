@@ -17,5 +17,7 @@
 </style>
 
 <script>
-  
+  export default {
+    name: 'my-hello'
+  }
 </script>

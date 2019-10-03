@@ -1,0 +1,12 @@
+<script>
+  class AllCustomComponent extends HTMLElement {
+    constructor () {
+      super();
+    }
+  };
+
+  export default {
+    name: 'all-custom',
+    component: AllCustomComponent
+  }
+</script>

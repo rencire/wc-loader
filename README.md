@@ -70,6 +70,11 @@ Now make a pull request, or two :)
 
 # Notes
 
+## Roadblocks
+
+- unable to support static import in <script> section of a .wc file. Might have to resort to writing a simple compiler? ]
+  - Some prior art: Svelte.
+
 ## Misc.
 
 Ideally, we should move the node packages into shell.nix in future.

@@ -1,0 +1,20 @@
+<template>
+  Custom with Base
+</template>
+<script type="module">
+  //import {BaseComponent} from './lib/WCLoader.js';
+
+  // Project Roadblock:
+  // these imports don't work because script content is executed in a Blob in client browser's memory, not as a file on the server.
+  import './test.js';
+  class CustomWithBase extends WC.BaseComponent {
+    constructor () {
+      super();
+    }
+  };
+
+  export default {
+    name: 'custom-with-base',
+    component: CustomWithBase
+  };
+</script>

@@ -3,10 +3,16 @@
   <head>
     <script type="module">
       import loadComponent from './lib/WCLoader.js';
-      loadComponent('./HelloWorld.wc').then( comp => console.log(comp));
+//      loadComponent('./HelloWorld.wc').then( comp => console.log(comp));
+      loadComponent('./CustomWithBase.wc');
+ //     loadComponent('./AllCustom.wc');
+  //    loadComponent('./DefaultName.wc');
     </script>
   </head>
   <body>
-    <hello-world>Eric</hello-world>
+    <my-hello>Eric</my-hello>
+    <custom-with-base />
+    <all-custom />
+    <default-name />
   </body>
 </html>
