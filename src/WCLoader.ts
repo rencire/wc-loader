@@ -4,6 +4,17 @@ type ParsedComponent = {
   script: HTMLScriptElement | null;
 };
 
+type ComponentSettings = {
+  template: HTMLTemplateElement | null;
+  style: HTMLStyleElement | null;
+  module: ModuleSettings | object;
+};
+
+type ModuleSettings = {
+  name: string;
+  component: HTMLElement | null;
+};
+
 const fetchAndParse = (url: string) =>
   fetch(url)
     .then(resp => {
@@ -52,15 +63,43 @@ const createBaseComponentClass = (
   return BaseComponent;
 };
 
-export const registerComponent = ({ template, style, script }: ParsedComponent) => {
+const getSettings = ({
+  template,
+  style,
+  script,
+}: ParsedComponent): Promise<ComponentSettings> => {
+  // Case where <script> tag is not specified in wc file.
+  if (script === null) {
+    return Promise.resolve({ template, style, module: {} });
+  }
+  const jsFile = new Blob([script!.textContent as string], {
+    type: "application/javascript",
+  });
+  const jsFileUrl = URL.createObjectURL(jsFile);
+
+  // TODO need to handle case when <script> exists, but no object is exported.
+  return import(jsFileUrl).then(module => ({ module, template, style }));
+};
+
+export const registerComponent = ({
+  template,
+  style,
+  module,
+}: ComponentSettings) => {
+  const moduleSettings = module as ModuleSettings;
+  if (!moduleSettings.name && !moduleSettings.component) {
+    return;
+  }
+
   return customElements.define(
-    "hello-world",
+    moduleSettings.name,
     createBaseComponentClass(style, template),
   );
 };
 
-
 const loadComponent = (url: string) =>
-  fetchAndParse(url).then(registerComponent);
+  fetchAndParse(url)
+    .then(getSettings)
+    .then(registerComponent);
 
 export default loadComponent;
